@@ -1,0 +1,67 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<title>WebGL Terrain Map</title>
+	<meta http-equiv="Content-Type" content="text/html"/>
+	<meta name="charset" content="utf-8"/>
+	<link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.1/js/dojo/dijit/themes/claro/claro.css">
+	<link rel="stylesheet" type="text/css" href="layout.css">
+	<script src='http://serverapi.arcgisonline.com/jsapi/arcgis/?v=3.1' data-dojo-config='parseOnLoad: true'></script>
+	<script type="text/javascript" src="World0.3.4.js"></script>
+	<script type="text/javascript" src="CanvasEventHandler.js"></script>
+	<script type="text/javascript" src="Logic.js"></script>
+</head>
+<body class="claro">
+	<div id="main">		
+		<div id="controls">
+			<div class="head">&nbsp Controls</div>
+			<div id="controlsContent">
+				<div id="btnSwitchContainer">
+					<button id="btnSwitch" 
+					onclick="javascript:bMap2D==true?startSwitch(true):startSwitch(false);">转换为3D视图</button>
+				</div>
+				<span class="tip">导航</span>
+				<image src="Images/horizontal.png" />
+				<button id="btnFullExtent" onclick="map.setExtent(getFullExtent());">全图</button>
+				<span class="tip">地图</span>
+				<image src="Images/horizontal.png" />
+				<input type="radio" id="radioSatelite" name="radioMap" checked/>Satelite<br/>
+				<input type="radio" id="radioStreet" name="radioMap"/>Street<br/>
+				<input type="radio" id="radioTopo" name="radioMap"/>Topo<br/>
+				<span class="tip">高程格网大小</span>
+				<image src="Images/horizontal.png" />
+				<div id="sliderGridSize"></div>
+				<label id="labelGridSize" style="float:left;">50</label></br>
+				<span class="tip">图像大小</span>
+				<image src="Images/horizontal.png" />
+				<select id="selectImageSize">
+					<option value="64">64</option>
+					<option value="128">128</option>
+					<option value="256">256</option>
+					<option value="512" >512</option>
+					<option value="1024" selected>1024</option>
+					<option value="2048">2048</option>
+				</select>
+				<a href="http://cn.khronos.org/" target="_blank" style="display:block;position:absolute;bottom:0px;">
+					<div style="width:116px;height:77px;background-image:url(Images/WebGL.png);"></div>
+				</a>
+				<span class="tip">拉伸系数</span>
+				<image src="Images/horizontal.png" />		
+				<div id="sliderStretch"></div>
+				<label id="labelStretch" style="float:left;">1</label>
+			</div>			
+		</div>
+		<div id="viewer">
+			<div class="head">
+				&nbsp Viewer
+				<a href="http://blog.csdn.net/iispring" target="_blank" style="float:right;text-decoration:none;color:#ffffff;margin-right:7px;text-align:center;line-height:25px;">About iSpring</a>
+			</div>			
+			<div id="mapId"></div>
+			<canvas id="canvasId" width="1040" height="625" style="display:none;"></canvas>
+			<a id="iSpring" href="http://blog.csdn.net/iispring" target="_blank">
+				<div></div>
+			</a>
+		</div>
+	</div>
+</body>
+</html>
